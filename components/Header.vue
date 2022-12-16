@@ -15,12 +15,12 @@ export default {
        <img src="@/assets/logo/logo.png" alt="steeplix">
      </div>
     <div class="header_container-subtitle">
-      Découvre les meilleurs films selon tes goûts
+      Discover the best films for your taste
     </div>
     <div class="header_container--search_input">
-      <label for="movie">Film</label>
+      <label for="movie">Film title</label>
       <input type="text" class="search_input-movie" v-model="movie">
-      <label for="year">Année</label>
+      <label for="year">Year</label>
       <input type="text" class="search_input-year" v-model="year">
       <button>
         <img src="@/assets/app_icons/chercher.png" alt="">
