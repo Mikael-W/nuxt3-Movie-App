@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "node-sass": "^8.0.0",
+    "nuxt": "3.0.0",
+    "sass-loader": "^13.2.0",
+    "vitest": "^0.25.8"
+  },
+  "dependencies": {
+    "@nuxtjs/composition-api": "^0.33.1",
+    "@pinia/nuxt": "^0.4.6",
+    "axios": "^1.2.1",
+    "pinia": "^2.0.28",
+    "sass": "^1.56.2"
+  }
+}
