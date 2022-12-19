@@ -1,9 +1,21 @@
 <script>
+import { useMovieStore } from "@/stores/movies";
+
+
 export default {
+  setup(){
+    const movieStore = useMovieStore();
+    return { movieStore }
+  },
   data(){
     return{ 
       movie:"",
       year:""
+    }
+  },
+  methods:{
+    getResults(){
+      this.movieStore.searchMovie("matrix");
     }
   }
 }
@@ -17,15 +29,15 @@ export default {
     <div class="header_container-subtitle">
       Discover the best films for your taste
     </div>
-    <div class="header_container--search_input">
+    <form class="header_container--search_input">
       <label for="movie">Film title</label>
       <input type="text" class="search_input-movie" v-model="movie">
       <label for="year">Year</label>
       <input type="text" class="search_input-year" v-model="year">
-      <button>
+      <button @click.prevent="getResults()">
         <img src="@/assets/app_icons/chercher.png" alt="">
       </button>
-    </div>
+    </form>
   </div>
 </template>
 

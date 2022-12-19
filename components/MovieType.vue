@@ -9,6 +9,7 @@ import { useMovieStore } from "@/stores/movies";
   methods: {
     getAllMoviesType(movieType: number){
       this.movieStore.getMoviesByType(movieType);
+      this.$emit('typeSelected', {close: true})
     }
   }
 }
@@ -76,6 +77,7 @@ import { useMovieStore } from "@/stores/movies";
       border: 1px solid #8273dc;
       border-radius:1rem;
       box-shadow: rgb(255 255 255 / 10%) 0px 1px 1px 0px inset, rgb(50 50 93 / 25%) 0px 50px 100px -20px, rgb(0 0 0 / 30%) 0px 30px 60px -30px;
+       
       cursor: pointer;
       img{ 
          width: 15vw;
@@ -87,6 +89,7 @@ import { useMovieStore } from "@/stores/movies";
     .movie_card:hover{
       transform: scale(1.1);
     }
+    
 }
 
 </style>
