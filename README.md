@@ -1,42 +1,31 @@
-# Nuxt 3 Minimal Starter
+# Bienvenue sur Steeplix ! 
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## installation
 
-## Setup
+git clone https://github.com/Mikael-W/nuxt3-Movie-App.git
 
-Make sure to install the dependencies:
+Accéeder au dossier via un terminal et entrer la commande : npm install 
 
-```bash
-# yarn
-yarn install
 
-# npm
-npm install
+## Lancer le projet
 
-# pnpm
-pnpm install --shamefully-hoist
-```
+entrer la commande: npm run start
 
-## Development Server
+## Amélioration que j'aurais aimer apporter
 
-Start the development server on http://localhost:3000
+- Ajouter les variables d'environnement sous nuxt 3 ( plusieurs recherches sans réels succès)
+- Retravailler et refactoriser les components sou Typescript, (j'ai plus travailler en back sous TS et peu en front)
+- Ajouter une page détaillée pour les films
+- Traduire le site en vf avec l'api deepl
+- Ajouter les messages d'erreurs pour la recherche par titre de film (manque de temps)
+- Ajouter des étoiles pour les notes 
+- Ajouter des liens dans les genres pour accèder à tous les films du même genre
+- Ajouter une liste de films similaires au détail d'un film via la requete api get similar movie
+- Ajouter plus d'animations
+- Prendre le temps de refactoriser le css 
 
-```bash
-npm run dev
-```
+J'espère n'avoir rien oublier
 
-## Production
+Merci pour le challenge !
 
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Temps passé sur le projet : 4h30
