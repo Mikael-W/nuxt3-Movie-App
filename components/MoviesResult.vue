@@ -1,4 +1,4 @@
-<script>
+<script >
 import { useMovieStore } from '~~/stores/movies';
 
 export default {
@@ -9,14 +9,24 @@ export default {
   data(){
     return { 
       currentPage: 1,
-      itemsPerPage: 10,
-      resultCount: 0
+      itemsPerPage: 10 ,
+      resultCount: 0 
     } 
+  },
+  created(){
+    this.movieStore.convertGenreId();
+  },
+  updated(){
+     this.$emit("stopLoading", {close : true,loading: false});
+    
   },
   methods: {
     setPage: function(pageNumber) {
       this.currentPage = pageNumber
     },
+    goBack(){
+      this.$emit("stopLoading", {close : false,loading: false})
+    }
   },
   computed:{
     totalPages() {
@@ -33,14 +43,26 @@ export default {
           }
           let index = this.currentPage * this.itemsPerPage - this.itemsPerPage
           return this.movieStore.data.slice(index, index + this.itemsPerPage)
+      },
+      getGenreNames(){
+        return function(genreId){
+          for (const genre of this.movieStore.genres){
+            if(genre.id === genreId){
+             return genre.name
+            }
+          }
+        }
       }
     },
     }
 </script>
 
 <template>
-  <div class="container">
-    <div class="movie"
+  <div class="container" v-if="movieStore.data.length > 0">
+    <div class="header_container--back_button" @click.prevent="goBack()">
+      Back home
+    </div>
+    <div class="movie" 
       v-for="(movie) in paginate" :key="movie.id"
       >
       <img class="movie_poster" :src="movieStore.img_url + movie.poster_path" alt="">
@@ -51,7 +73,7 @@ export default {
         <div class="vote"> <span class="movie_infos-title">Average:</span>   {{movie.vote_average}}</div>
         <div class="genres">
           <span class="movie_infos-title">Genres:</span>
-          <span v-for="(genre, index) in movie.genre_ids" :key="index">{{genre}}</span>
+          <span v-for="(genre) in movie.genre_ids" :key="genre">{{ getGenreNames(genre) }}</span>
         </div>
       </div>
     </div>
@@ -66,8 +88,8 @@ export default {
         {{ pageNumber }} 
       </button>
     </div>
-    
   </div>
+  <div v-if="movieStore.data.length <= 0" class="empty_store">Aucun résultat trouvé </div>
 </template>
 
 
@@ -134,5 +156,28 @@ export default {
     #button:hover{
       color: #8273dc;
     }
+}
+.empty_store{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 50vh;
+  color: #8273dc;
+  font-family: roboto,sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  
+}
+.header_container--back_button{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-block: 1rem;
+  color:#8273dc;
+  font-family: roboto,sans-serif;
+  font-size:1rem;
+  text-decoration: underline;
+  cursor: pointer;
 }
 </style>

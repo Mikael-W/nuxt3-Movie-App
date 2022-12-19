@@ -10,12 +10,17 @@ export default {
   data(){
     return{ 
       movie:"",
-      year:""
+      year:"",
+      errorMsg: false,
     }
   },
   methods:{
     getResults(){
-      this.movieStore.searchMovie("matrix");
+      this.movieStore.searchMovie(this.movie, this.year);
+      this.$emit("startLoading", {loading:true, close: true})
+    },
+    goBack(){
+      this.$emit("startLoading", {close: false})
     }
   }
 }
@@ -29,15 +34,16 @@ export default {
     <div class="header_container-subtitle">
       Discover the best films for your taste
     </div>
-    <form class="header_container--search_input">
-      <label for="movie">Film title</label>
-      <input type="text" class="search_input-movie" v-model="movie">
+    <div class="header_container--search_input">
+      <label for="movie">Film</label>
+      <input type="text" class="search_input-movie" v-model="movie" placeholder="Enter a film title">
       <label for="year">Year</label>
-      <input type="text" class="search_input-year" v-model="year">
+      <input type="text" class="search_input-year" v-model="year" placeholder="Enter a year (optionnal)">
       <button @click.prevent="getResults()">
         <img src="@/assets/app_icons/chercher.png" alt="">
       </button>
-    </form>
+    </div>
+    
   </div>
 </template>
 
@@ -76,9 +82,11 @@ export default {
       background-color:#E2E2E2;
       border-radius:1rem;
       outline: none;
-      width: 10vw;
+      width: 12vw;
       height: 2rem;
       margin-right: 2rem;
+      font-family: roboto,sans-serif;
+      text-indent: 1rem;
     }
     .search_input-movie{
       width: 20vw;
@@ -92,6 +100,17 @@ export default {
         }
     }
 
+}
+.header_container--back_button{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-block: 1rem;
+  color:#8273dc;
+  font-family: roboto,sans-serif;
+  font-size:1rem;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 

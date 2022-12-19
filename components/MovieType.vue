@@ -9,7 +9,7 @@ import { useMovieStore } from "@/stores/movies";
   methods: {
     getAllMoviesType(movieType: number){
       this.movieStore.getMoviesByType(movieType);
-      this.$emit('typeSelected', {close: true})
+      this.$emit('typeSelected', {close: true, loading:true})
     }
   }
 }
