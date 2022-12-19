@@ -19,9 +19,7 @@ export default {
       this.movieStore.searchMovie(this.movie, this.year);
       this.$emit("startLoading", {loading:true, close: true})
     },
-    goBack(){
-      this.$emit("startLoading", {close: false})
-    }
+   
   }
 }
 </script>
@@ -101,17 +99,7 @@ export default {
     }
 
 }
-.header_container--back_button{
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  margin-block: 1rem;
-  color:#8273dc;
-  font-family: roboto,sans-serif;
-  font-size:1rem;
-  text-decoration: underline;
-  cursor: pointer;
-}
+
 
 
   

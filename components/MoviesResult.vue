@@ -73,7 +73,7 @@ export default {
         <div class="vote"> <span class="movie_infos-title">Average:</span>   {{movie.vote_average}}</div>
         <div class="genres">
           <span class="movie_infos-title">Genres:</span>
-          <span v-for="(genre) in movie.genre_ids" :key="genre">{{ getGenreNames(genre) }}</span>
+          <span class="genre" v-for="(genre) in movie.genre_ids" :key="genre">{{ getGenreNames(genre) }}</span>
         </div>
       </div>
     </div>
@@ -135,6 +135,10 @@ export default {
     } 
     .genres{
       display: flex;
+        .genre{
+          margin-inline: 1rem;
+        }
+     
 }
 }
 .movie:hover{
