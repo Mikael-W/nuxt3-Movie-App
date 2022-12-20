@@ -48,7 +48,7 @@ export default {
         return function(genreId){
           for (const genre of this.movieStore.genres){
             if(genre.id === genreId){
-             return genre.name
+             return genre.name 
             }
           }
         }

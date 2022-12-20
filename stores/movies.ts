@@ -11,7 +11,10 @@ export const useMovieStore = defineStore("movie", {
   }),
   actions: {
       async convertGenreId(): Promise<void>{
-        await axios.get("https://api.themoviedb.org/3/genre/movie/list").then(response => {
+        await axios.get("https://api.themoviedb.org/3/genre/movie/list",{
+          headers: {
+            authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiZWUxNjFjM2Q2YTczYzFiYWRmNjRiODAxN2RkODBlNCIsInN1YiI6IjYyZjIyNzIwMTUxMWFhMDA3ZDQyODRjMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.KLXn1jHj49w417T36NxE0NENwVQ3Htaqz-5awc_NnkI`
+          }}).then(response => {
        this.genres = response.data.genres;
         }) 
   },
