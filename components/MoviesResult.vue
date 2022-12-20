@@ -184,4 +184,7 @@ export default {
   text-decoration: underline;
   cursor: pointer;
 }
+.current{
+  color: #8273dc;
+}
 </style>
